@@ -1,4 +1,10 @@
 <!-- eslint-disable vue/multi-word-component-names -->
+<script setup lang="ts">
+import { ref } from 'vue';
+
+  let isActive = ref(false);
+
+</script>
 <template>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
@@ -11,11 +17,12 @@
       </a>
 
       <a
+        :class="{ 'is-active': isActive}"
+        @click="isActive =! isActive"
         role="button"
         class="navbar-burger"
         aria-label="menu"
         aria-expanded="false"
-        data-target="navbarBasicExample"
       >
         <span aria-hidden="true"></span>
         <span aria-hidden="true"></span>
@@ -23,7 +30,7 @@
       </a>
     </div>
 
-    <div id="navbarBasicExample" class="navbar-menu">
+    <div id="navbarBasicExample" class="navbar-menu" :class="{ 'is-active': isActive}">
       <div class="navbar-start">
         <a class="navbar-item"> Home </a>
 
