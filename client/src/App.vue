@@ -1,18 +1,19 @@
-<!-- eslint-disable prettier/prettier -->
 <script setup lang="ts">
-  import { RouterLink, RouterView } from 'vue-router'
-  import NavVue from './components/Nav.vue';
+    import { RouterView } from 'vue-router'
+    import NavVue from './components/Nav.vue';
+
+    
 </script>
 
 <template>
-  
-<header>
-  <NavVue />
-</header>
+    
+  <header>
+    <NavVue />
+  </header>
 
-<div class="container">
-  <RouterView />
-</div>
+  <div class="container">
+    <RouterView />
+  </div>
 
 </template>
 

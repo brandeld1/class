@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+
 import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
