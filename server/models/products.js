@@ -1,14 +1,39 @@
 const data = require('../data/products.json');
+const { connect } = require('./mongo');
 
+<<<<<<< Updated upstream
 function getProducts() {
+=======
+const COLLECTION_NAME = 'products';
+
+async function collection() {
+    const client = await connect();
+    return client.db('chopify').collection(COLLECTION_NAME);
+}
+
+async function getProducts() {
+    const db = await collection();
+    const data = db.find().toArray();
     return data;
 }
 
-function getProduct(id) {
-    return data.products.find(p => p.id === id);
+async function getProduct(id) {
+    const db = await collection();
+    const data = await db.findOne({ _id: id });
+>>>>>>> Stashed changes
+    return data;
+}
+
+async function seed(){
+    const db = await collection();
+    await db.insertMany(data.products);
+    return 'success';
 }
 
 module.exports = {
+    COLLECTION_NAME,
+    collection,
     getProducts,
-    getProduct
+    getProduct,
+    seed
 };
