@@ -1,9 +1,7 @@
 const data = require('../data/products.json');
 const { connect } = require('./mongo');
 
-<<<<<<< Updated upstream
-function getProducts() {
-=======
+
 const COLLECTION_NAME = 'products';
 
 async function collection() {
@@ -19,8 +17,7 @@ async function getProducts() {
 
 async function getProduct(id) {
     const db = await collection();
-    const data = await db.findOne({ _id: id });
->>>>>>> Stashed changes
+    const data = await db.findOne({ id : id });
     return data;
 }
 
