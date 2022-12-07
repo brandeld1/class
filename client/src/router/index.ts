@@ -1,4 +1,4 @@
-import LoginViewVue from '../views/LoginView.vue'
+import LoginViewVue from '@/views/LoginView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import ProductsView from '../views/ProductsView.vue'
@@ -30,6 +30,21 @@ const router = createRouter({
         path: '/login',
         name: 'login',
         component: LoginViewVue,
+    },
+    {
+        path: '/admin/products',
+        name: 'admin_products',
+        component: () => import('../views/admin/ProductList.vue'),
+    },
+    {
+        path: '/admin/product/:id',
+        name: 'admin_product_edit',
+        component: () => import('../views/admin/ProductEdit.vue'),
+    },
+    {
+        path: '/admin/product_images/:id',
+        name: 'admin_product_images',
+        component: () => import('../views/admin/ProductImages.vue'),
     },
   ]
 })

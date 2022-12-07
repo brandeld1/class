@@ -5,11 +5,11 @@
     import { RouterLink } from "vue-router";
     import { getProducts, type Product } from "../stores/products";
 
-    const products = ref([] as Product[]);
-    getProducts().then( x=> products.value = x);
+    // const products = ref([] as Product[]);
+    // getProducts().then( x=> products.value = x);
 
-    //const products = reactive([] as Product[]);
-    //getProducts().then( x=> products.push(...x.products));
+    const products = reactive([] as Product[]);
+    getProducts().then( x=> products.push(...x.products));
     
 
     const search = ref("");
@@ -26,9 +26,9 @@
         </div>
         
         <div class="products">
-            <RouterLink v-for="product in products" :key="product.id" 
+            <RouterLink v-for="product in products" :key="product._id" 
                         class="product" :class="{ 'is-disabled': isLoading }"
-                        :to="`/product/${product.id}`"
+                        :to="`/product/${product._id}`"
                         v-show="product.title.toLowerCase().includes(search.toLowerCase())">
                 <div class="product-image">
                     <img :src="product.thumbnail" :alt="product.title" />

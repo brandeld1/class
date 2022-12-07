@@ -23,8 +23,9 @@ export async function api<T>(url: string, data: any = null, method?: string ){
     setError(null);
     try {
         return await myFetch<T>(url, data, method);
-    } catch (error) {
-        setError(error as string);
+    } catch (error:any) {
+        setError(error.message ?? error as string);
+        throw error;
     }finally{
         session.loading--;
     }
@@ -48,6 +49,7 @@ export interface User {
     name: string;
     email: string;
     password?: string;
+    picture?: string;
 }
 
 export interface Message {
